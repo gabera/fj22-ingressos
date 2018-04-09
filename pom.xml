@@ -4,7 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <developers>
-	<developer><name>Gabriel</name><email>gabera51@yahoo.com.br</email></developer>
+	<developer>
+		<name>Gabriel</name>
+		<email>gabera51@yahoo.com.br</email>
+	</developer>
     </developers>
 
     <modelVersion>4.0.0</modelVersion>
