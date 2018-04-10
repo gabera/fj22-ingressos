@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by nando on 03/03/17.
  */
-@Repository
+@Repository //anotacao do spring-context (gerencia hibernate e spring mvc) - beans do spring
 public class FilmeDao {
 
     @PersistenceContext
