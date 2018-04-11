@@ -30,10 +30,11 @@ public class Sessao {
 		horario = h;
 		filme = f;
 		sala = s;
+		preco = sala.getPreco().add(filme.getPreco()).setScale(2, RoundingMode.HALF_UP);
 		
 	}
 	public BigDecimal getPreco() {
-		return sala.getPreco().add(filme.getPreco()).setScale(2, RoundingMode.HALF_UP);
+		return preco;
 	}
 	
 	/**
