@@ -3,6 +3,11 @@ package br.com.caelum.ingresso.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.Duration;
 
 /**
@@ -14,10 +19,13 @@ public class Filme {
     @Id
     @GeneratedValue
     private Integer id;
+    @NotNull
     private String nome;
+    @NotNull
     private Duration duracao;
     private String genero;
-    
+    @Min(0)
+    private BigDecimal preco;
     
     
     /**
@@ -27,10 +35,23 @@ public class Filme {
 
     }
     
-    public Filme(String nome, Duration duracao, String genero) {
+    public Filme(String nome, Duration duracao, String genero, BigDecimal preco) {
 		this.nome = nome;
 		this.duracao = duracao;
 		this.genero = genero;
+		this.preco = preco;
+	}
+
+	public BigDecimal getPreco() {
+		return preco.setScale(2, RoundingMode.HALF_UP);
+	}
+
+	public void setPreco(BigDecimal preco) {
+		this.preco = preco;
+	}
+
+	public void setDuracao(Duration duracao) {
+		this.duracao = duracao;
 	}
 
 	public Integer getId() {

@@ -1,11 +1,14 @@
 package br.com.caelum.ingresso.model;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Min;
 
 @Entity // anotacao JPA - Java Persistence API
 public class Sessao {
@@ -20,12 +23,19 @@ public class Sessao {
 	@ManyToOne
 	private Filme filme;
 	
+	@Min(0)
+	private BigDecimal preco;
 	
 	public Sessao(LocalTime h, Filme f, Sala s){
 		horario = h;
 		filme = f;
-		sala = s;		
+		sala = s;
+		
 	}
+	public BigDecimal getPreco() {
+		return sala.getPreco().add(filme.getPreco()).setScale(2, RoundingMode.HALF_UP);
+	}
+	
 	/**
 	 * @deprecated //somente para o @Entity do Hibernate
 	 */
